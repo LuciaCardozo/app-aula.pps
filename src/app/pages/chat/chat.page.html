@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+  <div *ngIf="spinnerShow" style="font-size: 24px; position: absolute; top: 0; left: 0; z-index: 9999; background-color: #c8c7c5c4; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white">
+    Cargando <ion-spinner color="light" name="lines-sharp"></ion-spinner>
+  </div>
+  <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;"
+  [ngStyle]='{"background-color":shared.tituloDeChat == "Aula PPS 4°A" ? "#c2495b" : "#ad954c"}'>
+    <svg routerLink='/home' style="margin-right: 10px;color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+      </svg>
+    <h4 style="color: white; font-weight: bolder; font-size: 24px; font-family: Georgia, 'Times New Roman', Times, serif;">{{nombreJuego}}</h4>
+  </div>
+  <div class="overflow-auto my-list" style="height: 80vh; width: 100%; overflow: auto;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div class="card-body" *ngFor="let mensaje of lista">
+          <div class="card-text" style="display: flex; justify-content: flex-end; padding: 10px;" *ngIf="mensaje.emisor == usuarioActual">
+            <div style="width: 60%;"> 
+              <p style="background-color: rgb(157, 255, 127); margin-bottom:-10px; border-radius: 5px; padding: 5px;"
+              [ngStyle]='{"background-color":shared.tituloDeChat == "Aula PPS 4°A" ? "#c2495b" : "#ad954c"}'>{{mensaje.mensaje}}</p>
+              <span style="font-size: 10px; margin-left: 5px">{{mensaje.horario | date:'short'}}</span>
+             </div>
+            </div>
+          <div class="card-text" style="display: flex; justify-content: flex-start; padding:0 10px;" *ngIf="mensaje.emisor != usuarioActual">
+              <div style="width: 60%;">
+                <h6 style="text-transform: capitalize; margin-bottom: -24px; font-size: 20px; margin-left: 5px"
+                >{{mensaje.emisor.split('@')[0]}}</h6>
+                  <p style="background-color: rgb(157, 255, 127); margin-bottom: -10px; border-radius: 5px; padding: 5px;"
+                    [ngStyle]='{"background-color":shared.tituloDeChat == "Aula PPS 4°A" ? "#c2495b" : "#ad954c"}'>{{mensaje.mensaje}}</p>
+                  <span style="font-size: 12px; margin-left: 5px">{{mensaje.horario | date:'short'}}</span>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="card" style="padding: 10px; position: fixed; bottom: 0; left: 0; width: 100%;">
+    <div class="card-footer text-muted">
+        <div class="input-group mb-3" style="display: flex; justify-content: space-between; align-items: center;">
+            <input type="text" maxlength="21" [(ngModel)]="mensaje" class="form-control" placeholder="mensaje" style="width: 80%;
+              border: none; background-color: white; padding: 8px; border-radius: 10px; color: black;">
+                <a class="btn btn-primary" style="color: white; padding: 10px; border-radius: 10px; display: flex; justify-content: center; align-items: center;" 
+                [ngStyle]='{"background-color":shared.tituloDeChat == "Aula PPS 4°A" ? "#c2495b" : "#ad954c"}' (click)="mensajeChat()"><ion-icon name="send-sharp"></ion-icon>
+                </a>
+          </div>
+    </div>
+  </div>
+
+  <!-- <button class="btnChat btn btn-primary" *ngIf="!mostrarChat" (click)="mostrarChat=true">
+    <img src="https://img.utdstc.com/icon/d18/c3c/d18c3cfc4976d716bbb54e7f201d0d0dd32dec4d3b829736352415ea45697fd2:200" style="width: 50px; height: 50px;" alt="">
+  </button> -->
+  <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Message_%28Send%29.png" style="width: 30px; height: 30px;" alt=""> -->
+</ion-content>

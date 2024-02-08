@@ -1,0 +1,35 @@
+#splashAnimado{
+    position: absolute; 
+    top: 10rem;
+    animation-name: atrapando;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    //visibility: hidden;
+}
+
+@keyframes atrapando {
+    0%   {rotate: 0deg;}
+    50%  {rotate: 360deg;}
+    100% {rotate: 360deg;}
+}
+
+#splashAnimadoNombre{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 2rem; 
+    font-family: monospace; 
+    font-size: 18px; 
+    color: #2E3738; 
+    font-weight: bold;
+    animation-name: nombre;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    //visibility: hidden;
+}
+
+@keyframes nombre {
+    0%   {rotate: 0deg;}
+    50%  {rotate: 360deg;}
+    100% {rotate: 360deg;}
+}

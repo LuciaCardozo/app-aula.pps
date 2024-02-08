@@ -1,0 +1,11 @@
+<ion-app [ngStyle]="{'background-color': splash ? '#8478B6' : 'transparent'}">
+  <div id="divSuperPuesto" [style.visibility]="splash ? 'visible' : 'hidden'">
+    <div id="divSplash" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+      <!-- <img id="pokebola" src="../assets/pokebolaAbierta2.png" alt=""> -->
+      <img id="splashAnimado" src="../assets/icon.png" alt="" style="width: 300px;">
+    </div>
+    <h3 id='splashAnimadoNombre'>Lucía Cardozo PPS 4°B</h3>
+  </div>
+  <ion-router-outlet *ngIf="!splash"></ion-router-outlet>
+</ion-app>
+
